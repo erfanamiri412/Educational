@@ -1,0 +1,56 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School Management System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        header {
+            background-color: #007bff;
+            color: white;
+            padding: 10px;
+        }
+        nav {
+            margin-top: 10px;
+        }
+        nav a {
+            margin: 10px;
+            text-decoration: none;
+            color: #007bff;
+        }
+        .content {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>School Management System</h1>
+    </header>
+    <nav>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+        <a class="nav-item nav-link" href="{% url "list_teachers" %}">Teachers</a>
+      <a class="nav-item nav-link" href="{% url "list_students" %}">Students</a>
+      <a class="nav-item nav-link" href="{% url "list_grades" %}">Grades</a>
+      <a class="nav-item nav-link" href="{% url "teacher_create" %}">Create teacher</a>
+      <a class="nav-item nav-link" href="{% url "student_create" %}">Create student</a>
+      <a class="nav-item nav-link" href="{% url "grade_create" %}">Create grade</a>
+    </div>
+  </div>
+</nav>
+    </nav>
+    <div class="content">
+        <h2>A system for managing teachers, students, and grades</h2>
+        <p>Easily view and manage student performance.</p>
+    </div>
+</body>
+</html>

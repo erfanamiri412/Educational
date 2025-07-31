@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}list_students{% endblock title %}
+{% block bgcolor %}lightbrown{% endblock bgcolor %}
+{% block content %}
+{% for student in students|dictsortreversed:"id" %}
+<a href="{% url "student_details" student.id %}"><h1>{{student.id}}<h1></a>
+    <hr>
+{% endfor %}
+{% endblock content %}
+

@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+<a href="{{ url_for('index') }}" class="btn btn-primary">Go Back </a>
+<a href="{{ url_for('delete', id = st.id) }}" class="btn btn-danger">Delete </a>
+<a href="{{ url_for('update', id = st.id) }}" class="btn btn-success">Update </a>
+<p> {{ st.id }} </p>
+<p> {{ st.name }} </p>
+<p> {{ st.family }} </p>
+{% endblock content %}

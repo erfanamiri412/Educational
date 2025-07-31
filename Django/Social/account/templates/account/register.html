@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <form class="custom-form" method="post" action="" novalidate>
+    {% csrf_token %}
+    <h2>User Registration</h2>
+
+    {{ form.as_p }}
+
+    <button type="submit" class="full-width-btn">Register</button>
+  </form>
+
+  <style>
+    .custom-form {
+      max-width: 420px;
+      margin: 40px auto;
+      padding: 20px;
+      background-color: rgba(0, 0, 0, 0.6);
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      color: #fff;
+      font-family: 'Segoe UI', sans-serif;
+      box-sizing: border-box;
+    }
+
+    .custom-form h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .custom-form label {
+      display: block;
+      margin: 10px 0 5px;
+    }
+
+    .custom-form input,
+    .custom-form textarea,
+    .custom-form select,
+    .custom-form .full-width-btn {
+      display: block;
+      width: 100%;
+      padding: 10px 14px;
+      margin-bottom: 15px;
+      border: none;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+
+    .custom-form input,
+    .custom-form textarea,
+    .custom-form select {
+      background-color: rgba(255,255,255,0.1);
+      color: #fff;
+    }
+
+    .custom-form button.full-width-btn {
+      background-color: #00aaff;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .custom-form button.full-width-btn:hover {
+      background-color: #0088cc;
+    }
+  </style>
+{% endblock %}

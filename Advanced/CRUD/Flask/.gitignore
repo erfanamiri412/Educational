@@ -1,0 +1,3 @@
+.venv
+FlaskCRUD.db
+__pycache__

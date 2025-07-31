@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}Details{% endblock title %}
+
+{% block bgcolor %}yellow{% endblock bgcolor %}
+
+{% block content %}
+<a href="{% url "index" %}"class = "btn btn-success">Go Back</a>
+<a href="{% url "grade_delete" grade.id%}"class = "btn btn-danger">Delete</a>
+<a href="{% url "grade_update" grade.id%}"class = "btn btn-primary">Update</a>
+<h1>{{grade.id}}</h1>
+<h1>{{grade.student}}</h1>
+<h2>{{grade.subject}}</h2>
+<h2>{{grade.grade}}</h2>
+{% endblock content %}

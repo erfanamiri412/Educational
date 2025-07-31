@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>هواشناسی آنلاین</title>
+
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/doran-font@v1.0.0/dist/font-face.css" rel="stylesheet" type="text/css" />
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Doran', sans-serif;
+            font-weight: bold;
+            background: linear-gradient(to left, #f0f4f8, #d7e1ec);
+            color: #333;
+        }
+
+        header {
+            width: 100%;
+            background: linear-gradient(to left, #0077cc, #005fa3);
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        header h1 {
+            font-size: 4em;
+            font-weight: bold;
+            margin: 0;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 40px;
+            gap: 40px;
+        }
+
+        .right-section, .left-section {
+            flex: 1;
+            max-width: 500px;
+        }
+
+        form {
+            margin-bottom: 30px;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            font-size: 1em;
+            border: 2px solid #aaa;
+            border-radius: 8px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            font-size: 1em;
+            background-color: #0077cc;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #005fa3;
+        }
+
+        .weather-box {
+            background-color: #ffffffdd;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            margin-top: 20px;
+            text-align: right;
+        }
+
+        .weather-box img {
+            width: 100px;
+        }
+
+        .left-section h3 {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            margin: 8px 0;
+            font-weight: bold;
+            background-color: #fff;
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .right-section, .left-section {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>گزارش لحظه ای آب و هوا</h1>
+    </header>
+
+    <div class="container">
+        <div class="right-section">
+            <form method="get">
+                <input type="text" name="city" placeholder="نام شهر را وارد کنید" required>
+                <button type="submit">دریافت اطلاعات</button>
+            </form>
+
+            {% if weather %}
+            <div class="weather-box">
+                <h2>وضعیت آب‌وهوا در {{ weather.city }}</h2>
+                <p>🌡 دما: {{ weather.temperature }}°C</p>
+                <p>💧 رطوبت: {{ weather.humidity }}%</p>
+                <img src="https://openweathermap.org/img/wn/{{ weather.icon }}@4x.png"
+                     alt="آیکون آب‌وهوا"
+                     style="width: 100px; height: auto; display: block; margin-top: 10px;">
+            </div>
+            {% else %}
+                <p style="color: red;">اطلاعاتی برای نمایش وجود ندارد. لطفاً نام یک شهر را وارد کنید.</p>
+            {% endif %}
+        </div>
+
+        <div class="left-section">
+            <h3>📜 تاریخچه جستجوها:</h3>
+            <ul>
+                {% for record in previous_records %}
+                    <li>📍 {{ record.city }} - 🌡 {{ record.temperature }} °C - 💧 {{ record.humidity }} % - ⏰ {{ record.created_at }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        const persianDigits = ['۰','۱','۲','۳','۴','۵','۶','۷','۸','۹'];
+        document.querySelectorAll('p, h1, h2, h3, li').forEach(el => {
+            el.innerHTML = el.innerHTML.replace(/\d/g, d => persianDigits[d]);
+        });
+    </script>
+
+</body>
+</html>

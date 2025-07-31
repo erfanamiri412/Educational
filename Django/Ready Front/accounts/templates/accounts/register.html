@@ -1,0 +1,23 @@
+{% extends "base.html" %} {% block content %}
+<section class="container">
+  <h1 class="large text-primary">Sign Up</h1>
+  <p class="lead"><i class="fas fa-user"></i> Create Your Account</p>
+
+
+  <form action="" class="form" method="post">
+    {% csrf_token %}
+    {% for field in form %}
+      <div class="form-group">
+          {{field}}
+          <small class="form-text">
+             {{field.help_text}}
+          </small>
+      </div>
+    {% endfor %}
+    <input type="submit" value="Register" class="btn btn-primary" />
+  </form>
+
+
+  <p class="my-1">Already have an account? <a href="{% url "login" %}">Sign In</a></p>
+</section>
+{% endblock content %}

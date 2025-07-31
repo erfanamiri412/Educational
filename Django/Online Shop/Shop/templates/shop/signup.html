@@ -1,0 +1,35 @@
+{% extends "shop/base.html" %}
+{% load static %}
+{% load humanize %}
+{% block content %}
+    <!-- Header-->
+    <header class="bg-dark py-5">
+        <div class="container px-4 px-lg-5 my-5">
+            <div class="text-center text-white">
+                <h1 class="display-4 fw-bolder">ثبت نام</h1>
+                <p class="lead fw-normal text-white-50 mb-0">همین الان اکانت بسازید</p>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="row">
+            <center>
+                <div class="col-10">
+                    <form action="{% url 'signup' %}" method="post">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <input type="text" name="username" class="form-control" placeholder="نام کاربری را وارد کنید">
+                        </div>
+                        <div class="mb-3">
+                            <input type="password" name="password" class="form-control" placeholder="رمز عبور را وارد کنید">
+                        </div>
+                        <button type="submit" class="btn btn-primary">ثبت نام</button>
+                    </form>
+                </div>
+            </center>
+        </div>
+    </div>
+
+    <br><br>
+{% endblock content %}
